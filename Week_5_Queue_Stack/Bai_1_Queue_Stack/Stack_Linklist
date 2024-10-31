@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+struct Node{
+    int data;
+    Node *next;
+
+    Node(int newData){
+        data = newData;
+    }
+};
+
+class Stack{
+    Node *llist;
+
+    void push(int data){
+        Node *newNode = new Node(data);
+        Node *nextNode = llist;
+        while(nextNode!=nullptr){
+            nextNode = nextNode->next;
+        }
+        nextNode->next = newNode;
+    }
+
+    bool pop(){
+        if(llist!=nullptr){
+            cout << "Stack is empty";
+            return false;
+        }
+        Node *next = llist;
+        while(next!=nullptr){
+            next = next->next;
+        }
+    }
+};
