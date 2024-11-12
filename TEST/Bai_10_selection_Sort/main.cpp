@@ -1,53 +1,41 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
 void printSelectionSort(vector<int> arr)
 {
-    int n = arr.size();
-    for (int i = 0; i < n - 1; i++)
+
+    for (int j = arr.size() - 1; j >= 0; j--)
     {
-        int minIndex = i;
-        for (int j = i + 1; j < n; j++)
+        int max_index = j;
+        for (size_t i = 0; i < arr.size() - 1 - j; i++)
         {
-            if (arr[j] < arr[minIndex]) 
-            {
-                minIndex = j;
+            if(arr[i]>arr[max_index]){
+                max_index = i;
             }
         }
-        if (minIndex != i) 
-        {
-            cout << i << " " << minIndex<<" ";
-            swap(arr[i], arr[minIndex]);
-        }
+        cout << max_index << " ";
+        swap(arr[j], arr[max_index]);
     }
-    cout << endl;
 }
 
 int main()
 {
-    int numQ;
-    cin >> numQ;
-    vector<vector<int>> ans;
-    while (numQ > 0)
+    int num;
+    cin >> num;
+    vector<vector<int>> sortQuestion;
+    for (int ques = 0; ques < num; ques++)
     {
         int size;
         cin >> size;
         vector<int> arr;
-        for (int i = 0; i < size; i++)
-        {
-            int data;
-            cin >> data;
-            arr.push_back(data);
+        for (int i = 0; i < size;i++){
+            cin >> arr[i];
         }
-        ans.push_back(arr);
-        numQ--;
+        sortQuestion.push_back(arr);
     }
-    for (size_t i = 0; i < ans.size(); i++)
-    {
-        printSelectionSort(ans[i]);
+    for(int i = 0; i < num;i++){
+        printSelectionSort(sortQuestion[i]);
     }
-    return 0;
 }
