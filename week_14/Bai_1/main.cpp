@@ -2,24 +2,31 @@
 #include <string>
 using namespace std;
 
-struct Node {
+struct Node
+{
     char data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
 };
 
-void decodeHuffman(Node* root, const string& encodedString) {
-    Node* current = root;
+void decodeHuffman(Node *root, const string &encodedString)
+{
+    Node *current = root;
     string decodedString;
 
-    for (char bit : encodedString) {
-        if (bit == '0') {
+    for (char bit : encodedString)
+    {
+        if (bit == '0')
+        {
             current = current->left;
-        } else if (bit == '1') {
+        }
+        else if (bit == '1')
+        {
             current = current->right;
         }
 
-        if (!current->left && !current->right) {
+        if (!current->left && !current->right)
+        {
             decodedString += current->data;
             current = root;
         }
@@ -28,8 +35,9 @@ void decodeHuffman(Node* root, const string& encodedString) {
     cout << decodedString << endl;
 }
 
-int main() {
-    Node* root = new Node{'*', nullptr, nullptr};
+int main()
+{
+    Node *root = new Node{'*', nullptr, nullptr};
     root->left = new Node{'*', nullptr, nullptr};
     root->right = new Node{'*', nullptr, nullptr};
     root->left->left = new Node{'A', nullptr, nullptr};

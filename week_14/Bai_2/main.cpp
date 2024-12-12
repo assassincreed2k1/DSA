@@ -13,11 +13,11 @@ int longestIncreasingSubsequence(vector<int> &arr)
         auto it = lower_bound(lis.begin(), lis.end(), x);
         if (it == lis.end())
         {
-            lis.push_back(x); // Append x if it's greater than all in lis
+            lis.push_back(x); 
         }
         else
         {
-            *it = x; // Replace the first element >= x
+            *it = x; 
         }
     }
 
