@@ -9,7 +9,7 @@ int longestIncreasingSubsequence(vector<int> &arr)
     if (n == 0)
         return 0;
 
-    vector<int> dp(n, 1);
+    vector<int> dp(n, 1); 
 
     for (int i = 1; i < n; i++)
     {
@@ -28,7 +28,7 @@ int longestIncreasingSubsequence(vector<int> &arr)
 int main()
 {
     int n;
-    cin >> n;
+    cin >> n; 
     vector<int> arr(n);
 
     for (int i = 0; i < n; ++i)

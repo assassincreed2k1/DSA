@@ -1,34 +1,33 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+
 using namespace std;
 
 int longestIncreasingSubsequence(vector<int> &arr)
 {
-    int n = arr.size();
-    if (n == 0)
-        return 0;
+    vector<int> lis;
 
-    vector<int> dp(n, 1);
-
-    for (int i = 1; i < n; i++)
+    for (int x : arr)
     {
-        for (int j = 0; j < i; j++)
+        auto it = lower_bound(lis.begin(), lis.end(), x);
+        if (it == lis.end())
         {
-            if (arr[i] > arr[j])
-            {
-                dp[i] = max(dp[i], dp[j] + 1);
-            }
+            lis.push_back(x); 
+        }
+        else
+        {
+            *it = x; 
         }
     }
 
-    return *max_element(dp.begin(), dp.end());
+    return lis.size();
 }
 
 int main()
 {
     int n;
-    cin >> n;
+    cin >> n; // Read size of array
     vector<int> arr(n);
 
     for (int i = 0; i < n; ++i)
